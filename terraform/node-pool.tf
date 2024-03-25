@@ -59,7 +59,7 @@ resource "aws_launch_template" "eks_node_group_launch_template" {
 
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name    = aws_eks_cluster.my-cluster.name
+  cluster_name    = var.cluster_name
   node_group_name = "private-nodes"
   node_role_arn   = aws_iam_role.nodes-role.arn
   subnet_ids = [
@@ -92,6 +92,7 @@ resource "aws_eks_node_group" "private-nodes" {
     aws_iam_role_policy_attachment.my-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.my-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.my-AmazonEC2ContainerRegistryReadOnly,
+    aws_eks_cluster.my-cluster,
   ]
 }
 

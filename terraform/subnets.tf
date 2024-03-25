@@ -1,6 +1,6 @@
 resource "aws_subnet" "private-us-east-1a" {
   vpc_id            = aws_vpc.my-vpc.id
-  cidr_block        = "10.0.128.0/20"
+  cidr_block        = var.private_cidr_1a
   availability_zone = "us-east-1a"
 
   tags = {
@@ -12,7 +12,7 @@ resource "aws_subnet" "private-us-east-1a" {
 
 resource "aws_subnet" "private-us-east-1b" {
   vpc_id            = aws_vpc.my-vpc.id
-  cidr_block        = "10.0.144.0/20"
+  cidr_block        = var.private_cidr_1b
   availability_zone = "us-east-1b"
 
   tags = {
@@ -24,7 +24,7 @@ resource "aws_subnet" "private-us-east-1b" {
 
 resource "aws_subnet" "public-us-east-1a" {
   vpc_id                  = aws_vpc.my-vpc.id
-  cidr_block              = "10.0.0.0/20"
+  cidr_block              = var.public_cidr_1a
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
 
@@ -37,7 +37,7 @@ resource "aws_subnet" "public-us-east-1a" {
 
 resource "aws_subnet" "public-us-east-1b" {
   vpc_id                  = aws_vpc.my-vpc.id
-  cidr_block              = "10.0.16.0/20"
+  cidr_block              = var.public_cidr_1b
   availability_zone       = "us-east-1b"
   map_public_ip_on_launch = true
 
