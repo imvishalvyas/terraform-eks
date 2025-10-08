@@ -1,14 +1,18 @@
 # Terraform EKS Cluster Deployment
 This repository contains Terraform code for deploying an Amazon EKS (Elastic Kubernetes Service) cluster on AWS.
 ```
-├── README.md
 ├── kubernetes
 │   ├── deployment.yaml
 │   ├── service-account.yaml
 │   └── service.yaml
+├── README.md
 └── terraform
+    ├── addons.tf
+    ├── backend.tf
+    ├── ebs-csi-iam.tf
     ├── eks-cluster.tf
     ├── igw.tf
+    ├── k8s-helm-providers.tf
     ├── net-gateway.tf
     ├── node-pool.tf
     ├── oidc-iam.tf
