@@ -38,7 +38,7 @@ resource "aws_security_group" "eks_node_group_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow traffic from anywhere
+    cidr_blocks = ["0.0.0.0/0"] # Allow traffic from anywhere
   }
 }
 
@@ -68,11 +68,11 @@ resource "aws_eks_node_group" "private-nodes" {
   ]
 
   launch_template {
-    id = aws_launch_template.eks_node_group_launch_template.id
+    id      = aws_launch_template.eks_node_group_launch_template.id
     version = aws_launch_template.eks_node_group_launch_template.latest_version
   }
   capacity_type  = "ON_DEMAND"
-  instance_types = ["t2.micro"]
+  instance_types = ["t3a.large"]
 
   scaling_config {
     desired_size = 1

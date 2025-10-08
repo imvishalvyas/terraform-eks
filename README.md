@@ -37,8 +37,21 @@ git clone https://github.com/imvishalvyas/terraform-eks.git
 cd terraform
 ```
 
-### 2. Set Up Terraform Backend (Optional):
-If you wish to store Terraform state remotely, configure the backend by modifying backend.tf file with your preferred backend configuration.
+### 2. Set Up Terraform Backend (Recommended):
+To store Terraform state remotely, configure the backend by editing `terraform/backend.tf` with your S3 bucket and (optionally) DynamoDB table for state locking.
+Example configuration:
+```hcl
+terraform {
+    backend "s3" {
+        bucket         = "<your-s3-bucket-name>"
+        key            = "terraform/eks/terraform.tfstate"
+        region         = "us-east-1"
+        encrypt        = true
+        dynamodb_table = "<your-dynamodb-table-name>" # Optional: for state locking
+    }
+}
+```
+Replace `<your-s3-bucket-name>` and `<your-dynamodb-table-name>` with your actual resources. Make sure the S3 bucket and DynamoDB table exist before running `terraform init`.
 
 
 ### 3. Provide AWS Credentials:
