@@ -1,5 +1,12 @@
 provider "aws" {
   region = var.region
+  default_tags {
+    tags = {
+      ManagedBy = var.managed_by
+      Env       = var.env
+      Priority  = var.priority
+    }
+  }
 }
 
 terraform {
